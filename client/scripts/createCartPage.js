@@ -1,5 +1,6 @@
 import { getData } from './getData.js';
 import userData from './userData.js';
+import { noImage } from '../assets/image/no-image.jpg'
 
 const sendData = async (url, data) => {
 	const response = await fetch(url, {
@@ -14,7 +15,7 @@ const sendData = async (url, data) => {
 
 const sendCart = () => {
 	const cartForm = document.querySelector('.cart-form');
-	
+
 	cartForm.addEventListener('submit', event => {
 		event.preventDefault();
 
@@ -66,7 +67,7 @@ const createCartPage = () => {
 					<li class="cart-item">
 						<div class="product">
 							<div class="product__image-container">
-								<img src=${img[0]}
+								<img src=${noImage}
 									alt="${itemName} - ${description}">
 							</div>
 							<div class="product__description">
@@ -77,10 +78,10 @@ const createCartPage = () => {
 							<div class="product__prices">
 								<div class="product__price-type product__price-type-regular">
 									<div>
-										<div class="product__total product__total-regular">${price*countUser}.-</div>
-										${countUser > 1 ? 
-											`<div class="product__price-regular">${price}.-</div>` : ''
-										}
+										<div class="product__total product__total-regular">${price * countUser}.-</div>
+										${countUser > 1 ?
+						`<div class="product__price-regular">${price}.-</div>` : ''
+					}
 									</div>
 								</div>
 							</div>
@@ -109,7 +110,7 @@ const createCartPage = () => {
 				id: event.target.dataset.idd,
 				count: parseInt(event.target.value)
 			};
-			getData.cart(userData.cartList, renderCartList);	
+			getData.cart(userData.cartList, renderCartList);
 		});
 
 		cartList.addEventListener('click', event => {
